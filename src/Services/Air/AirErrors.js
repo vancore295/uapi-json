@@ -19,6 +19,7 @@ Object.assign(AirValidationError, createErrorsList({
   LegsInvalidStructure: 'Leg in leg array foes not all required fields',
   AirPricingSolutionInvalidType: 'air:AirPricingSolution array is expected',
   BirthDateInvalid: 'Invalid birth date',
+  LocatorCodeMissing: 'Missing LocatorCode in request',
 }, AirValidationError));
 
 export const GdsValidationError = createErrorClass(
@@ -89,6 +90,9 @@ Object.assign(AirRuntimeError, createErrorsList({
   NoResultsFound: 'No results found',
   NoValidFare: 'No valid fare for input criteria.',
   TravelersListError: 'Not all BookingTravelers present in list or wrong lookup keys provided',
+  PNRNotFound: 'PNR does not exist',
+  ImportError: 'Error importing booking',
+  CancelError: 'Error canceling booking',
 }, AirRuntimeError));
 Object.assign(AirFlightInfoRuntimeError, createErrorsList({
   FlightNotFound: 'Flight not found',

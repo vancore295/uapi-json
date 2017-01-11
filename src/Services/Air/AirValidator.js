@@ -218,6 +218,13 @@ Validator.prototype.flightInfo = function () {
   return this;
 };
 
+Validator.prototype.locatorCode = function () {
+  if (this.params.LocatorCode === undefined) {
+    throw new AirValidationError.LocatorCodeMissing(this.params);
+  }
+  return this;
+};
+
 module.exports = {
   AIR_LOW_FARE_SEARCH_REQUEST(params) {
     return new Validator(params)
@@ -302,6 +309,7 @@ module.exports = {
 
   AIR_CANCEL_UR(params) {
     return new Validator(params)
+            .locatorCode()
             .end();
   },
 

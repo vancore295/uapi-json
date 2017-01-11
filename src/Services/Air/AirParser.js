@@ -427,6 +427,9 @@ const AirErrorHandler = function (obj) {
     switch (errData[`common_${this.uapi_version}:Code`]) {
       case '3037': // No availability on chosen flights, unable to fare quote
         throw new AirRuntimeError.NoResultsFound(obj);
+      case '1512':
+        // Trying to import a non-existing PNR
+        throw new AirRuntimeError.PNRNotFound(obj);
       default:
         throw new AirRuntimeError(obj); // TODO replace with custom error
     }
@@ -568,6 +571,23 @@ function gdsQueue(req) {
   return true;
 }
 
+function importUR(req) {
+  let locator = null;
+  try {
+    locator = req['universal:UniversalRecord'].LocatorCode;
+  } catch (e) {
+    throw new AirRuntimeError.ImportError(req);
+  }
+
+  return locator;
+}
+
+function cancelRequest(req) {
+  if (!req['universal:ProviderReservationStatus']) throw new AirRuntimeError.CancelError(req);
+
+  return req['universal:ProviderReservationStatus'];
+}
+
 module.exports = {
   AIR_LOW_FARE_SEARCH_REQUEST: lowFaresSearchRequest,
   AIR_PRICE_REQUEST: airPriceRsp,
@@ -578,7 +598,8 @@ module.exports = {
   AIR_PRICE_FARE_RULES: AirPriceFareRules,
   FARE_RULES_RESPONSE: FareRules,
   GDS_QUEUE_PLACE_RESPONSE: gdsQueue,
-  AIR_CANCEL_UR: nullParsing,
+  AIR_IMPORT_UR: importUR,
+  AIR_CANCEL_UR: cancelRequest,
   UNIVERSAL_RECORD_FOID: nullParsing,
   AIR_ERRORS: AirErrorHandler, // errors handling
   AIR_FLIGHT_INFORMATION: airFlightInfoRsp,

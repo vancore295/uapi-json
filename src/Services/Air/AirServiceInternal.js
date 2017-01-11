@@ -77,6 +77,16 @@ module.exports = function (auth, debug, production) {
       AirParser.AIR_IMPORT_REQUEST,
       debug
     ),
+    importUR: uApiRequest(
+      config.UniversalRecord.url,
+      auth,
+      `${templatesDir}/UNIVERSAL_RECORD_IMPORT_REQUEST.xml`,
+      'universal:UniversalRecordImportRsp',
+      AirValidator.AIR_REQUEST_BY_PNR, // checks for PNR
+      AirParser.AIR_ERRORS,
+      AirParser.AIR_IMPORT_UR,
+      debug
+    ),
     fareRulesBooked: uApiRequest(
       config.AirService.url,
       auth,
@@ -137,7 +147,7 @@ module.exports = function (auth, debug, production) {
       config.UniversalRecord.url,
       auth,
       `${templatesDir}/UNIVERSAL_RECORD_CANCEL_UR.xml`,
-      null, // TODO rewrite into uAPI parser
+      'universal:UniversalRecordCancelRsp',
       AirValidator.AIR_CANCEL_UR,
       AirParser.AIR_ERRORS,
       AirParser.AIR_CANCEL_UR,

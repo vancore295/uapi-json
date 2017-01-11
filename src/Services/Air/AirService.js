@@ -83,5 +83,15 @@ module.exports = (settings) => {
           Promise.reject(err);
         });
     },
+
+    cancel(options) {
+      const AirService = airServiceInternal(auth, debug, production);
+      return AirService.importUR(options).then((locator) => {
+        const cancelReq = {
+          LocatorCode: locator,
+        };
+        return AirService.cancelUR(cancelReq);
+      });
+    },
   };
 };
