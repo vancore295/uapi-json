@@ -325,7 +325,7 @@ describe('#AirParser', function () {
 
   describe('AIR_CANCEL_UR', () => {
     it('parse cancel by UR', () => {
-      const uParser = new ParserUapi(null, 'v36_0', { });
+      const uParser = new ParserUapi('universal:UniversalRecordCancelRsp', 'v36_0', { });
       const parseFunction = airParser.AIR_CANCEL_UR;
       const xml = fs.readFileSync(`${xmlFolder}/AirCancelUR.xml`).toString();
       return uParser.parse(xml).then(json => {
