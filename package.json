@@ -1,13 +1,14 @@
 {
-  "name": "uapi-json",
-  "version": "0.19.2",
-  "description": "Travelport Universal API",
+  "name": "uapi-jester",
+  "version": "1.0.3",
+  "description": "Travelport Universal API Fork",
   "main": "build/",
   "files": [
     "build/",
     "README.md",
     "LICENSE",
-    "docs"
+    "docs",
+    "src/"
   ],
   "scripts": {
     "test": "mocha -t 3000 --compilers js:babel-core/register --recursive",
@@ -16,17 +17,13 @@
     "fix": "eslint --fix src/",
     "lint": "eslint src/",
     "build": "babel --copy-files src/ -d build/",
-    "prepublish": "npm run lint && npm run test && npm run build"
+    "prepublish": "npm run lint && npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Travelport-Ukraine/uapi-json"
+    "url": "git+https://github.com/vancore295/uapi-json.git"
   },
-  "keywords": [
-    "uapi",
-    "node",
-    "travelport"
-  ],
+  "keywords": [],
   "author": "Mark Orel <mail.ormark@gmail.com>",
   "constributors": [
     "Dmitry Chertousov <d.chertousov@gmail.com>",
@@ -55,7 +52,7 @@
     "babel-register": "^6.26.0",
     "chai": "^3.5.0",
     "codecov": "^1.0.1",
-    "eslint": "^3.4.0",
+    "eslint": "^3.19.0",
     "eslint-config-airbnb": "^12.0.0",
     "eslint-plugin-import": "^1.16.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
@@ -66,5 +63,14 @@
     "readline2": "^1.0.1",
     "sinon": "^1.17.7",
     "sinon-chai": "^2.12.0"
+  },
+  "bugs": {
+    "url": "https://github.com/Travelport-Ukraine/uapi-json/issues"
+  },
+  "homepage": "https://github.com/Travelport-Ukraine/uapi-json#readme",
+  "directories": {
+    "doc": "docs",
+    "example": "examples",
+    "test": "test"
   }
 }
