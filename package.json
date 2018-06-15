@@ -1,14 +1,12 @@
 {
   "name": "uapi-jester",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Travelport Universal API Fork",
   "main": "build/",
   "files": [
     "build/",
-    "README.md",
     "LICENSE",
-    "docs",
-    "src/"
+    "docs"
   ],
   "scripts": {
     "test": "mocha -t 3000 --compilers js:babel-core/register --recursive",
@@ -17,7 +15,7 @@
     "fix": "eslint --fix src/",
     "lint": "eslint src/",
     "build": "babel --copy-files src/ -d build/",
-    "prepublish": "npm run lint && npm run build"
+    "prepublish": "npm run lint && npm run test &&npm run build"
   },
   "repository": {
     "type": "git",

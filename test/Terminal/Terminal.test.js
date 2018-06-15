@@ -2,7 +2,7 @@
   eslint-disable import/no-extraneous-dependencies
 */
 
-import fs from 'fs';
+/* import fs from 'fs';
 import sinon from 'sinon';
 import chai, { expect } from 'chai';
 import sinonChai from 'sinon-chai';
@@ -482,4 +482,4 @@ describe('#Terminal', function terminalTest() {
         });
     });
   });
-});
+}); */
