@@ -1,5 +1,3 @@
-"use strict";
-
 module.exports = `
 <!--Release 42-->
 <!--Version Dated as of 14/Aug/2015 18:47:44-->
