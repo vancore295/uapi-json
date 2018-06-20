@@ -1,5 +1,7 @@
+"use strict";
+
 module.exports = `
-<!--Release 33-->
+<!--Release 42-->
 <!--Version Dated as of 14/Aug/2015 18:47:44-->
 <!--Air Low Fare Search For Galileo(1G) Request-->
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
@@ -7,6 +9,8 @@ module.exports = `
         <air:LowFareSearchReq
             AuthorizedBy="user" TraceId="{{requestId}}" TargetBranch="{{TargetBranch}}"
             ReturnUpsellFare="true"
+            ReturnBrandedFares="true"
+            CheckOBFees="All"
             xmlns:air="http://www.travelport.com/schema/air_v42_0"
             xmlns:com="http://www.travelport.com/schema/common_v42_0"
             >
@@ -59,6 +63,8 @@ module.exports = `
                 {{#if pricing.eTicketability}}
                 ETicketability="{{pricing.eTicketability}}"
                 {{/if}}
+                ReturnFareAttributes="true"
+                ReturnServices="true"
             />
             {{/if}}
             {{#if emulatePcc}}
