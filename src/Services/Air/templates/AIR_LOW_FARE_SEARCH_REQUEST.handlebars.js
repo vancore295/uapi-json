@@ -9,8 +9,8 @@ module.exports = `
             ReturnUpsellFare="true"
             ReturnBrandedFares="true"
             CheckOBFees="All"
-            xmlns:air="http://www.travelport.com/schema/air_v42_0"
-            xmlns:com="http://www.travelport.com/schema/common_v42_0"
+            xmlns:air="http://www.travelport.com/schema/air_v45_0"
+            xmlns:com="http://www.travelport.com/schema/common_v45_0"
             >
             <com:BillingPointOfSaleInfo OriginApplication="uAPI"/>
             {{#legs}}
@@ -39,18 +39,18 @@ module.exports = `
                 {{/if}}
             >
                 <air:PreferredProviders>
-                    <com:Provider Code="1G" xmlns:com="http://www.travelport.com/schema/common_v42_0"/>
+                    <com:Provider Code="1G" xmlns:com="http://www.travelport.com/schema/common_v45_0"/>
                 </air:PreferredProviders>
                 {{#if carriers}}
                 <air:PermittedCarriers>
                     {{#carriers}}
-                        <com:Carrier Code="{{.}}" xmlns:com="http://www.travelport.com/schema/common_v42_0"/>
+                        <com:Carrier Code="{{.}}" xmlns:com="http://www.travelport.com/schema/common_v45_0"/>
                     {{/carriers}}
                 </air:PermittedCarriers>
                 {{/if}}
             </air:AirSearchModifiers>
             {{#passengers}}
-            <com:SearchPassenger Code="{{ageCategory}}"{{#if child}} Age="9"{{/if}} xmlns:com="http://www.travelport.com/schema/common_v42_0"/>
+            <com:SearchPassenger Code="{{ageCategory}}"{{#if child}} Age="9"{{/if}} xmlns:com="http://www.travelport.com/schema/common_v45_0"/>
             {{/passengers}}
             {{#if pricing}}
             <air:AirPricingModifiers
