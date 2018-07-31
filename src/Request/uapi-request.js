@@ -12,6 +12,9 @@ import configInit from '../config';
 
 handlebars.registerHelper('equal', require('handlebars-helper-equal'));
 
+var _requstXml = null;
+var _responseXml = null;
+
 /**
  * basic function for requests/responses
  * @param  {string} service          service url for current response (gateway)
@@ -70,6 +73,7 @@ module.exports = function uapiRequest(
         log('Request URL: ', service);
         log('Request XML: ', pd.xml(xml));
       }
+      _requstXml = xml;
       return axios.request({
         url: service,
         method: 'POST',
@@ -88,6 +92,7 @@ module.exports = function uapiRequest(
           if (debugMode > 1) {
             log('Response SOAP: ', pd.xml(response.data));
           }
+          _responseXml = response.data;
           return response.data;
         })
         .catch((e) => {
@@ -144,7 +149,13 @@ module.exports = function uapiRequest(
           log('Returning result', pd.json(result));
         }
       }
-      return result;
+      const allData = {
+        result: result,
+        requestXml: _requstXml,
+        reponseXml: _responseXml
+      };
+
+      return allData;
     };
 
 
