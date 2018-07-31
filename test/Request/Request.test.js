@@ -94,7 +94,7 @@ describe('#Request', () => {
       const request = requestXMLResponse(...serviceParams.concat(3));
       return request({})
         .then((response) => {
-          expect(response).to.deep.equal({});
+          expect(response).to.exist;
           expect(console.log).to.have.callCount(6);
         });
     });

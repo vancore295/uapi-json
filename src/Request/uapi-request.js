@@ -10,10 +10,10 @@ import { Parser as UapiParser, errorsConfig } from './uapi-parser';
 import prepareRequest from './prepare-request';
 import configInit from '../config';
 
-handlebars.registerHelper('equal', require('handlebars-helper-equal'));
+let requstXml = null;
+let responseXml = null;
 
-var _requstXml = null;
-var _responseXml = null;
+handlebars.registerHelper('equal', require('handlebars-helper-equal'));
 
 /**
  * basic function for requests/responses
@@ -73,7 +73,7 @@ module.exports = function uapiRequest(
         log('Request URL: ', service);
         log('Request XML: ', pd.xml(xml));
       }
-      _requstXml = xml;
+      requstXml = xml;
       return axios.request({
         url: service,
         method: 'POST',
@@ -92,7 +92,7 @@ module.exports = function uapiRequest(
           if (debugMode > 1) {
             log('Response SOAP: ', pd.xml(response.data));
           }
-          _responseXml = response.data;
+          responseXml = response.data;
           return response.data;
         })
         .catch((e) => {
@@ -150,9 +150,9 @@ module.exports = function uapiRequest(
         }
       }
       const allData = {
-        result: result,
-        requestXml: _requstXml,
-        reponseXml: _responseXml
+        res: result,
+        requestXml: requstXml,
+        reponseXml: responseXml,
       };
 
       return allData;
