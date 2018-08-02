@@ -40,7 +40,7 @@ module.exports = (settings) => {
         const bookingParams = Object.assign({}, {
           ticketDate: moment().add(6, 'hours').format(),
           ActionStatusType: 'TAU',
-        }, data, options);
+        }, data.res, options);
         return service.createReservation(bookingParams).catch((err) => {
           if (err instanceof AirRuntimeError.SegmentBookingFailed
               || err instanceof AirRuntimeError.NoValidFare) {
