@@ -1,6 +1,6 @@
 {
   "name": "uapi-jester",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Travelport Universal API Fork",
   "main": "build/",
   "files": [
