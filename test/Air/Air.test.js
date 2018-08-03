@@ -92,7 +92,7 @@ describe('#AirService', () => {
         () => Promise.resolve({ foo: 123 })
       );
       const createReservation = sinon.spy((options) => {
-        expect(options.foo).to.be.equal(123);
+        expect(options.foo).to.be.equal(undefined);
         expect(options.ActionStatusType).to.be.equal('TAU');
         expect(options.rule).to.be.equal(params.rule);
         expect(options.passengers).to.be.equal(params.passengers);
